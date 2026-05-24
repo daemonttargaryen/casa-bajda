@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Experience — Casa Bajda, Marsaskala Malta</title>
+<link href="https://fonts.googleapis.com/css2?family=Italiana&family=Lato:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--sand:#F5EDD8;--stone:#EDE0C4;--limestone:#D4C4A0;--warm:#C4A868;--terra:#A67C4A;--deep:#5C3E20;--sea:#4A7A8C;--ink:#2A1E0E;--muted:#7A6848;--white:#FDFAF4;--border:#DDD0B0}
+html{scroll-behavior:smooth}
+body{background:var(--white);color:var(--ink);font-family:'Lato',sans-serif;font-weight:300;overflow-x:hidden;display:flex;flex-direction:column;min-height:100vh}
+main{flex:1}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.1rem 3rem;display:flex;justify-content:space-between;align-items:center;background:rgba(253,250,244,.97);border-bottom:1px solid var(--border)}
+.logo{font-family:'Italiana',serif;font-size:26px;letter-spacing:.06em;color:var(--ink);text-decoration:none}.logo span{color:var(--terra)}
+.nav-links{display:flex;gap:2rem;list-style:none;align-items:center}
+.nav-links a{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .2s}
+.nav-links a:hover,.nav-links a.active{color:var(--terra)}
+.nav-book{background:var(--terra);color:var(--white)!important;padding:10px 22px}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none}
+.hamburger span{display:block;width:22px;height:1.5px;background:var(--ink)}
+.mob{display:none;position:fixed;inset:0;background:var(--white);z-index:200;flex-direction:column;align-items:center;justify-content:center;gap:2.5rem}
+.mob.open{display:flex}
+.mob a{font-family:'Italiana',serif;font-size:32px;color:var(--ink);text-decoration:none}
+.mob-close{position:absolute;top:1.75rem;right:2.5rem;background:none;border:none;font-size:28px;cursor:pointer;color:var(--muted)}
+.page-hero{padding:8rem 3rem 4rem;background:var(--deep);border-bottom:1px solid rgba(255,255,255,.08)}
+.page-hero-inner{max-width:1100px;margin:0 auto}
+.page-hero-pre{font-size:10px;letter-spacing:.26em;text-transform:uppercase;color:var(--warm);margin-bottom:1rem}
+.page-hero h1{font-family:'Italiana',serif;font-size:clamp(40px,6vw,72px);color:var(--sand);line-height:1.0}
+.page-hero-sub{font-size:14px;color:rgba(255,255,255,.45);line-height:1.9;max-width:500px;margin-top:1.25rem}
+.eyebrow{font-size:10px;letter-spacing:.26em;text-transform:uppercase;color:var(--terra);margin-bottom:1rem}
+.section-h{font-family:'Italiana',serif;font-size:clamp(28px,4vw,46px);line-height:1.05;color:var(--ink);margin-bottom:1.25rem}
+.divider{width:36px;height:2px;background:var(--terra);margin:1.25rem 0}
+/* BREAKFAST */
+.breakfast{padding:6rem 3rem;max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+.breakfast p{font-size:14px;color:var(--muted);line-height:1.9;margin-bottom:1rem}
+.bf-img{aspect-ratio:4/3;background:linear-gradient(150deg,var(--warm),var(--terra));display:flex;align-items:center;justify-content:center}
+.bf-img span{font-family:'Italiana',serif;font-size:18px;color:rgba(255,255,255,.5)}
+.menu-list{display:flex;flex-direction:column;margin-top:1.5rem}
+.menu-item-row{display:flex;justify-content:space-between;padding:.75rem 0;border-bottom:1px solid var(--border);font-size:13px}
+.menu-item-row span:last-child{color:var(--muted);font-size:12px}
+/* INCLUDED */
+.included{background:var(--sand);padding:6rem 3rem;border-top:1px solid var(--border)}
+.included-inner{max-width:1100px;margin:0 auto}
+.included-header{margin-bottom:3rem}
+.features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.feat{background:var(--white);padding:2rem}
+.feat-icon{font-size:28px;margin-bottom:1rem}
+.feat-title{font-size:15px;color:var(--ink);font-weight:400;margin-bottom:.5rem}
+.feat-desc{font-size:13px;color:var(--muted);line-height:1.7}
+/* TIPS */
+.tips{padding:6rem 3rem;max-width:1100px;margin:0 auto}
+.tips-intro{max-width:560px;margin-bottom:3rem}
+.tips-intro p{font-size:14px;color:var(--muted);line-height:1.9}
+.tips-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;background:var(--border)}
+.tip{background:var(--white);padding:1.75rem;display:flex;gap:1.25rem;align-items:flex-start}
+.tip-num{font-family:'Italiana',serif;font-size:32px;color:var(--limestone);flex-shrink:0;line-height:1}
+.tip-title{font-size:14px;color:var(--ink);font-weight:400;margin-bottom:.4rem}
+.tip-desc{font-size:13px;color:var(--muted);line-height:1.65}
+/* CTA */
+.cta{background:var(--deep);padding:5rem 3rem;text-align:center}
+.cta h2{font-family:'Italiana',serif;font-size:clamp(28px,4vw,52px);color:var(--sand);margin-bottom:1.25rem}
+.cta p{font-size:14px;color:rgba(255,255,255,.4);max-width:400px;margin:0 auto 2rem;line-height:1.8}
+.btn-warm{background:var(--warm);color:var(--deep);padding:14px 32px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;transition:background .2s;font-family:'Lato',sans-serif;display:inline-block}
+.btn-warm:hover{background:var(--sand)}
+footer{background:#1E1008;padding:3rem;display:grid;grid-template-columns:1fr 1fr 1fr;gap:2rem}
+.footer-logo{font-family:'Italiana',serif;font-size:24px;color:rgba(255,255,255,.4);margin-bottom:.75rem}
+.footer-tagline{font-size:12px;color:rgba(255,255,255,.2);line-height:1.6}
+.footer-col-title{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:1rem}
+.footer-links{display:flex;flex-direction:column;gap:.5rem}
+.footer-links a{font-size:13px;color:rgba(255,255,255,.3);text-decoration:none;transition:color .2s}
+.footer-links a:hover{color:rgba(255,255,255,.6)}
+.footer-bottom{background:#130A04;padding:1.25rem 3rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+.footer-copy{font-size:11px;color:rgba(255,255,255,.15);letter-spacing:.08em}
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .8s ease,transform .8s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}
+@media(max-width:900px){
+  nav{padding:.9rem 1.5rem}.nav-links,.nav-book{display:none}.hamburger{display:flex}
+  .page-hero{padding:6rem 1.5rem 3rem}
+  .breakfast{grid-template-columns:1fr;gap:3rem;padding:4rem 1.5rem}
+  .included,.tips{padding:4rem 1.5rem}
+  .features-grid{grid-template-columns:1fr}
+  .tips-grid{grid-template-columns:1fr}
+  .cta{padding:4rem 1.5rem}
+  footer{grid-template-columns:1fr;padding:2.5rem 1.5rem}
+  .footer-bottom{padding:1rem 1.5rem}
+}
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="logo">Casa <span>Bajda</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li><li><a href="rooms.html">Rooms</a></li>
+    <li><a href="experience.html" class="active">Experience</a></li>
+    <li><a href="location.html">Location</a></li>
+    <li><a href="contact.html" class="nav-book">Book a Stay</a></li>
+  </ul>
+  <button class="hamburger" onclick="document.getElementById('mob').classList.toggle('open')" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+<div class="mob" id="mob">
+  <button class="mob-close" onclick="document.getElementById('mob').classList.remove('open')">×</button>
+  <a href="index.html">Home</a><a href="rooms.html">Rooms</a><a href="experience.html">Experience</a><a href="location.html">Location</a><a href="contact.html">Book</a>
+</div>
+<main>
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <p class="page-hero-pre">What's Included</p>
+    <h1>The Experience</h1>
+    <p class="page-hero-sub">Staying at Casa Bajda comes with things you won't find on Booking.com. Here's what we mean by that.</p>
+  </div>
+</div>
+<section class="breakfast reveal">
+  <div>
+    <p class="eyebrow">Every Morning</p>
+    <h2 class="section-h">Breakfast, the Maltese way.</h2>
+    <div class="divider"></div>
+    <p>We don't serve continental breakfasts in plastic wrappers. Every morning between 7:30 and 9:30, we lay out a full Maltese spread on the terrace (weather permitting) or in the dining room.</p>
+    <p>Everything is made or sourced locally. The bread comes from the bakery two streets away. The cheeselets are from a farm in Rabat. The eggs are from our neighbour's chickens.</p>
+    <div class="menu-list">
+      <div class="menu-item-row"><span>Ħobż tal-Malti</span><span>Fresh Maltese sourdough, daily</span></div>
+      <div class="menu-item-row"><span>Pastizzi</span><span>Ricotta or mushy peas, from the bakery</span></div>
+      <div class="menu-item-row"><span>Gbejniet</span><span>Fresh and peppered cheeselets</span></div>
+      <div class="menu-item-row"><span>Eggs</span><span>Scrambled, fried or boiled — your choice</span></div>
+      <div class="menu-item-row"><span>Seasonal fruit</span><span>Local and fresh</span></div>
+      <div class="menu-item-row"><span>Coffee, tea, juice</span><span>Help yourself</span></div>
+    </div>
+  </div>
+  <div class="bf-img d2"><span>Morning terrace</span></div>
+</section>
+<section class="included reveal">
+  <div class="included-inner">
+    <div class="included-header"><p class="eyebrow">All Included</p><h2 class="section-h">Everything you need.</h2></div>
+    <div class="features-grid">
+      <div class="feat"><div class="feat-icon">☀</div><div class="feat-title">Daily breakfast</div><div class="feat-desc">Full Maltese spread every morning. Dietary requirements happily accommodated — just let us know.</div></div>
+      <div class="feat"><div class="feat-icon">📶</div><div class="feat-title">Free WiFi</div><div class="feat-desc">Fast, reliable WiFi throughout the guesthouse. Password on arrival.</div></div>
+      <div class="feat"><div class="feat-icon">🚗</div><div class="feat-title">Free parking</div><div class="feat-desc">Private off-street parking behind the guesthouse. No need to hunt for a space.</div></div>
+      <div class="feat"><div class="feat-icon">✈</div><div class="feat-title">Airport transfers</div><div class="feat-desc">Flat rate €20 each way with our trusted driver. Arrange at booking or any time before arrival.</div></div>
+      <div class="feat"><div class="feat-icon">🗺</div><div class="feat-title">Local expertise</div><div class="feat-desc">We know Malta inside out. Ask us anything — beaches, restaurants, what to avoid, what not to miss.</div></div>
+      <div class="feat"><div class="feat-icon">🧹</div><div class="feat-title">Daily housekeeping</div><div class="feat-desc">Rooms serviced every morning while you're at breakfast. Fresh towels every two days, or on request.</div></div>
+    </div>
+  </div>
+</section>
+<section class="tips reveal">
+  <div class="tips-intro">
+    <p class="eyebrow">Local Tips</p>
+    <h2 class="section-h">Things only locals know.</h2>
+    <div class="divider"></div>
+    <p>Fifteen years of hosting guests means we know exactly what makes a trip to Malta memorable. Here are a few of our best-kept secrets.</p>
+  </div>
+  <div class="tips-grid">
+    <div class="tip"><div class="tip-num">1</div><div><div class="tip-title">St. Peter's Pool on a weekday</div><div class="tip-desc">Malta's most beautiful natural swimming pool is 10 minutes away. Go before 9am or after 5pm in summer to have it nearly to yourself.</div></div></div>
+    <div class="tip"><div class="tip-num">2</div><div><div class="tip-title">Marsaxlokk Sunday market</div><div class="tip-desc">The best fish market in Malta, 10 minutes away. Go early for the freshest catch and stay for a plate of grilled lampuki at the waterfront.</div></div></div>
+    <div class="tip"><div class="tip-num">3</div><div><div class="tip-title">Mdina at dusk</div><div class="tip-desc">Malta's ancient walled capital is magical after the day-trippers leave. Take the bus at 5pm and have the streets almost to yourself.</div></div></div>
+    <div class="tip"><div class="tip-num">4</div><div><div class="tip-title">Dingli Cliffs for sunset</div><div class="tip-desc">The highest point in Malta with unobstructed views over the Mediterranean. Best reached by car; we can tell you exactly where to park.</div></div></div>
+    <div class="tip"><div class="tip-num">5</div><div><div class="tip-title">The best pastizzi in Malta</div><div class="tip-desc">Crystal Palace in Rabat. Open 24 hours. Order the ricotta ones. Don't let anyone tell you otherwise.</div></div></div>
+    <div class="tip"><div class="tip-num">6</div><div><div class="tip-title">Avoid the Valletta crowds</div><div class="tip-desc">Go Tuesday–Thursday. Skip the Three Cities boat trip (overrated). Walk the Upper Barrakka at 8am — the views are the same and you'll have them alone.</div></div></div>
+  </div>
+</section>
+<div class="cta reveal">
+  <h2>Ready to experience it?</h2>
+  <p>Book a stay and we'll take care of the rest.</p>
+  <a href="contact.html" class="btn-warm">Check Availability</a>
+</div>
+</main>
+<footer>
+  <div><div class="footer-logo">Casa Bajda</div><div class="footer-tagline">A limestone guesthouse in Marsaskala, Malta. Family-run since 2009.</div></div>
+  <div><div class="footer-col-title">Navigate</div><div class="footer-links"><a href="index.html">Home</a><a href="rooms.html">Rooms</a><a href="experience.html">Experience</a><a href="location.html">Location</a><a href="contact.html">Book a Stay</a></div></div>
+  <div><div class="footer-col-title">Contact</div><div class="footer-links"><a href="tel:+35699000000">+356 9900 0000</a><a href="mailto:stay@casabajda.com.mt">stay@casabajda.com.mt</a><a href="#">WhatsApp Us</a></div></div>
+</footer>
+<div class="footer-bottom"><span class="footer-copy">© 2026 Casa Bajda · Marsaskala, Malta</span><span class="footer-copy">Boutique Guesthouse · B&B</span></div>
+<script>
+const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible')}),{threshold:.08});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>

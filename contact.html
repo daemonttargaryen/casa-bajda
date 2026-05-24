@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Book a Stay — Casa Bajda, Marsaskala Malta</title>
+<link href="https://fonts.googleapis.com/css2?family=Italiana&family=Lato:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--sand:#F5EDD8;--warm:#C4A868;--terra:#A67C4A;--deep:#5C3E20;--sea:#4A7A8C;--ink:#2A1E0E;--muted:#7A6848;--white:#FDFAF4;--border:#DDD0B0}
+html{scroll-behavior:smooth}
+body{background:var(--white);color:var(--ink);font-family:'Lato',sans-serif;font-weight:300;overflow-x:hidden;display:flex;flex-direction:column;min-height:100vh}
+main{flex:1}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.1rem 3rem;display:flex;justify-content:space-between;align-items:center;background:rgba(253,250,244,.97);border-bottom:1px solid var(--border)}
+.logo{font-family:'Italiana',serif;font-size:26px;letter-spacing:.06em;color:var(--ink);text-decoration:none}.logo span{color:var(--terra)}
+.nav-links{display:flex;gap:2rem;list-style:none;align-items:center}
+.nav-links a{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .2s}
+.nav-links a:hover,.nav-links a.active{color:var(--terra)}
+.nav-book{background:var(--terra);color:var(--white)!important;padding:10px 22px}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none}
+.hamburger span{display:block;width:22px;height:1.5px;background:var(--ink)}
+.mob{display:none;position:fixed;inset:0;background:var(--white);z-index:200;flex-direction:column;align-items:center;justify-content:center;gap:2.5rem}
+.mob.open{display:flex}
+.mob a{font-family:'Italiana',serif;font-size:32px;color:var(--ink);text-decoration:none}
+.mob-close{position:absolute;top:1.75rem;right:2.5rem;background:none;border:none;font-size:28px;cursor:pointer;color:var(--muted)}
+.page-hero{padding:8rem 3rem 4rem;background:var(--deep)}
+.page-hero-inner{max-width:1100px;margin:0 auto}
+.page-hero-pre{font-size:10px;letter-spacing:.26em;text-transform:uppercase;color:var(--warm);margin-bottom:1rem}
+.page-hero h1{font-family:'Italiana',serif;font-size:clamp(40px,6vw,72px);color:var(--sand);line-height:1.0}
+.page-hero-sub{font-size:14px;color:rgba(255,255,255,.45);line-height:1.9;max-width:500px;margin-top:1.25rem}
+.eyebrow{font-size:10px;letter-spacing:.26em;text-transform:uppercase;color:var(--terra);margin-bottom:1rem}
+.section-h{font-family:'Italiana',serif;font-size:clamp(26px,3.5vw,40px);line-height:1.05;color:var(--ink);margin-bottom:1.25rem}
+.divider{width:36px;height:2px;background:var(--terra);margin:1.25rem 0}
+/* BOOKING */
+.booking{padding:6rem 3rem}
+.booking-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1.3fr;gap:6rem;align-items:start}
+.b-info p{font-size:14px;color:var(--muted);line-height:1.9;margin-bottom:1.5rem}
+.b-details{display:flex;flex-direction:column;gap:1.25rem;margin-top:2rem}
+.bd-label{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:3px}
+.bd-val{font-size:14px;color:var(--ink);line-height:1.65}
+.b-note{margin-top:2rem;background:var(--sand);padding:1.25rem;font-size:13px;color:var(--muted);line-height:1.7;border-left:3px solid var(--terra)}
+.form-group{margin-bottom:1.1rem}
+.form-label{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:6px}
+.form-input{width:100%;background:rgba(255,255,255,.5);border:1px solid var(--border);border-bottom:2px solid var(--terra);color:var(--ink);padding:10px 12px;font-size:13px;font-family:'Lato',sans-serif;font-weight:300;transition:border-color .2s;outline:none;-webkit-appearance:none;appearance:none}
+.form-input:focus{border-bottom-color:var(--deep)}
+.form-input::placeholder{color:rgba(42,30,14,.25)}
+select.form-input{cursor:pointer}
+textarea.form-input{resize:vertical;min-height:100px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.form-submit{background:var(--terra);color:var(--white);border:none;padding:14px 36px;font-size:12px;letter-spacing:.16em;text-transform:uppercase;cursor:pointer;font-family:'Lato',sans-serif;transition:background .2s;margin-top:.75rem}
+.form-submit:hover{background:var(--deep)}
+.form-success{display:none;font-size:14px;color:var(--terra);margin-top:1rem;line-height:1.6}
+.form-success.show{display:block}
+/* FAQ */
+.faq{background:var(--sand);padding:6rem 3rem;border-top:1px solid var(--border)}
+.faq-inner{max-width:760px;margin:0 auto}
+.faq-header{text-align:center;margin-bottom:3rem}
+.faq-list{display:flex;flex-direction:column}
+.faq-item{border-bottom:1px solid var(--border)}
+.faq-q{width:100%;background:none;border:none;text-align:left;padding:1.25rem 0;display:flex;justify-content:space-between;align-items:center;cursor:pointer;font-family:'Lato',sans-serif;font-size:14px;color:var(--ink);font-weight:400}
+.faq-q:hover{color:var(--terra)}
+.faq-icon{font-size:20px;color:var(--terra);transition:transform .3s}
+.faq-icon.open{transform:rotate(45deg)}
+.faq-a{font-size:13px;color:var(--muted);line-height:1.85;max-height:0;overflow:hidden;transition:max-height .4s ease,padding .3s}
+.faq-a.open{max-height:200px;padding-bottom:1.25rem}
+footer{background:#1E1008;padding:3rem;display:grid;grid-template-columns:1fr 1fr 1fr;gap:2rem}
+.footer-logo{font-family:'Italiana',serif;font-size:24px;color:rgba(255,255,255,.4);margin-bottom:.75rem}
+.footer-tagline{font-size:12px;color:rgba(255,255,255,.2);line-height:1.6}
+.footer-col-title{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:1rem}
+.footer-links{display:flex;flex-direction:column;gap:.5rem}
+.footer-links a{font-size:13px;color:rgba(255,255,255,.3);text-decoration:none;transition:color .2s}
+.footer-links a:hover{color:rgba(255,255,255,.6)}
+.footer-bottom{background:#130A04;padding:1.25rem 3rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+.footer-copy{font-size:11px;color:rgba(255,255,255,.15);letter-spacing:.08em}
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .8s ease,transform .8s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+@media(max-width:900px){
+  nav{padding:.9rem 1.5rem}.nav-links,.nav-book{display:none}.hamburger{display:flex}
+  .page-hero{padding:6rem 1.5rem 3rem}
+  .booking{padding:4rem 1.5rem}.booking-inner{grid-template-columns:1fr;gap:3rem}
+  .form-row{grid-template-columns:1fr}
+  .faq{padding:4rem 1.5rem}
+  footer{grid-template-columns:1fr;padding:2.5rem 1.5rem}
+  .footer-bottom{padding:1rem 1.5rem}
+}
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="logo">Casa <span>Bajda</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li><li><a href="rooms.html">Rooms</a></li>
+    <li><a href="experience.html">Experience</a></li><li><a href="location.html">Location</a></li>
+    <li><a href="contact.html" class="active nav-book">Book a Stay</a></li>
+  </ul>
+  <button class="hamburger" onclick="document.getElementById('mob').classList.toggle('open')" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+<div class="mob" id="mob">
+  <button class="mob-close" onclick="document.getElementById('mob').classList.remove('open')">×</button>
+  <a href="index.html">Home</a><a href="rooms.html">Rooms</a><a href="experience.html">Experience</a><a href="location.html">Location</a><a href="contact.html">Book</a>
+</div>
+<main>
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <p class="page-hero-pre">Reservations</p>
+    <h1>Book a Stay</h1>
+    <p class="page-hero-sub">Fill in the form and we'll get back to you within a few hours. For urgent enquiries, WhatsApp is the fastest way to reach us.</p>
+  </div>
+</div>
+<section class="booking reveal">
+  <div class="booking-inner">
+    <div class="b-info">
+      <p class="eyebrow">Contact Us</p>
+      <h2 class="section-h">We respond within a few hours.</h2>
+      <div class="divider"></div>
+      <p>We handle all bookings directly — no third-party fees, no middlemen. Just message us, tell us your dates and who's coming, and we'll sort the rest.</p>
+      <div class="b-details">
+        <div><div class="bd-label">Address</div><div class="bd-val">14, Triq il-Baħar<br/>Marsaskala MKL 2010</div></div>
+        <div><div class="bd-label">WhatsApp & Phone</div><div class="bd-val">+356 9900 0000</div></div>
+        <div><div class="bd-label">Email</div><div class="bd-val">stay@casabajda.com.mt</div></div>
+        <div><div class="bd-label">Check-in / Check-out</div><div class="bd-val">From 14:00 / By 11:00</div></div>
+      </div>
+      <div class="b-note">We respond to all enquiries within a few hours. For urgent bookings, WhatsApp is fastest. We're happy to hold a room for 24 hours while you confirm.</div>
+    </div>
+    <form onsubmit="submitForm(event)">
+      <div class="form-row">
+        <div class="form-group"><label class="form-label">Check-in Date</label><input type="date" class="form-input" required/></div>
+        <div class="form-group"><label class="form-label">Check-out Date</label><input type="date" class="form-input" required/></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label class="form-label">Guests</label><select class="form-input"><option>1 guest</option><option>2 guests</option><option>3 guests</option><option>4 guests</option><option>5+ guests</option></select></div>
+        <div class="form-group"><label class="form-label">Room Preference</label><select class="form-input"><option>Sea View Double</option><option>Garden Room</option><option>Family Suite</option><option>Not sure yet</option></select></div>
+      </div>
+      <div class="form-group"><label class="form-label">Full Name</label><input type="text" class="form-input" placeholder="Maria Borg" required/></div>
+      <div class="form-row">
+        <div class="form-group"><label class="form-label">Email</label><input type="email" class="form-input" placeholder="you@email.com" required/></div>
+        <div class="form-group"><label class="form-label">Phone / WhatsApp</label><input type="tel" class="form-input" placeholder="+356"/></div>
+      </div>
+      <div class="form-group"><label class="form-label">Nationality</label><input type="text" class="form-input" placeholder="e.g. British, German, Italian..."/></div>
+      <div class="form-group"><label class="form-label">Special Requests</label><textarea class="form-input" placeholder="Airport transfer, dietary needs, early check-in, celebrations, anything else..."></textarea></div>
+      <button type="submit" class="form-submit">Send Enquiry</button>
+      <div class="form-success" id="fs">✓ Enquiry received — we'll be in touch within a few hours to confirm your stay.</div>
+    </form>
+  </div>
+</section>
+<section class="faq reveal">
+  <div class="faq-inner">
+    <div class="faq-header"><p class="eyebrow">Before You Book</p><h2 class="section-h">Common questions.</h2></div>
+    <div class="faq-list">
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span>Is breakfast really included?</span><span class="faq-icon">+</span></button><div class="faq-a">Yes, every morning for every guest. A full Maltese breakfast is served 7:30–9:30. Dietary requirements are easily accommodated — just let us know in advance.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span>What time is check-in and check-out?</span><span class="faq-icon">+</span></button><div class="faq-a">Check-in is from 14:00. Check-out is by 11:00. Early check-in and late check-out can often be arranged depending on availability — just ask when you book.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span>Is there free parking?</span><span class="faq-icon">+</span></button><div class="faq-a">Yes. We have a small private car park behind the guesthouse with space for up to three cars. Street parking is also available nearby at no charge.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span>Can you arrange airport transfers?</span><span class="faq-icon">+</span></button><div class="faq-a">Yes. We work with a trusted local driver who charges a flat rate of €20 each way. Let us know your flight details when you book and we'll arrange everything.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span>What is your cancellation policy?</span><span class="faq-icon">+</span></button><div class="faq-a">Free cancellation up to 48 hours before arrival. For cancellations within 48 hours, the first night is charged. No-shows are charged in full.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span>Do you accept children?</span><span class="faq-icon">+</span></button><div class="faq-a">Yes, children are very welcome. The Family Suite is particularly well-suited for families with children. We have a travel cot available on request at no extra charge.</div></div>
+    </div>
+  </div>
+</section>
+</main>
+<footer>
+  <div><div class="footer-logo">Casa Bajda</div><div class="footer-tagline">A limestone guesthouse in Marsaskala, Malta. Family-run since 2009.</div></div>
+  <div><div class="footer-col-title">Navigate</div><div class="footer-links"><a href="index.html">Home</a><a href="rooms.html">Rooms</a><a href="experience.html">Experience</a><a href="location.html">Location</a><a href="contact.html">Book a Stay</a></div></div>
+  <div><div class="footer-col-title">Contact</div><div class="footer-links"><a href="tel:+35699000000">+356 9900 0000</a><a href="mailto:stay@casabajda.com.mt">stay@casabajda.com.mt</a><a href="#">WhatsApp Us</a></div></div>
+</footer>
+<div class="footer-bottom"><span class="footer-copy">© 2026 Casa Bajda · Marsaskala, Malta</span><span class="footer-copy">Boutique Guesthouse · B&B</span></div>
+<script>
+const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible')}),{threshold:.08});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+function submitForm(e){e.preventDefault();document.getElementById('fs').classList.add('show');e.target.querySelectorAll('input,select,textarea,button').forEach(el=>el.disabled=true)}
+function toggleFaq(btn){const a=btn.nextElementSibling,i=btn.querySelector('.faq-icon'),open=a.classList.contains('open');document.querySelectorAll('.faq-a').forEach(x=>x.classList.remove('open'));document.querySelectorAll('.faq-icon').forEach(x=>x.classList.remove('open'));if(!open){a.classList.add('open');i.classList.add('open')}}
+</script>
+</body>
+</html>

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Location — Casa Bajda, Marsaskala Malta</title>
+<link href="https://fonts.googleapis.com/css2?family=Italiana&family=Lato:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--sand:#F5EDD8;--warm:#C4A868;--terra:#A67C4A;--deep:#5C3E20;--sea:#4A7A8C;--sea-pale:#E8F0F2;--ink:#2A1E0E;--muted:#7A6848;--white:#FDFAF4;--border:#DDD0B0}
+html{scroll-behavior:smooth}
+body{background:var(--white);color:var(--ink);font-family:'Lato',sans-serif;font-weight:300;overflow-x:hidden;display:flex;flex-direction:column;min-height:100vh}
+main{flex:1}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.1rem 3rem;display:flex;justify-content:space-between;align-items:center;background:rgba(253,250,244,.97);border-bottom:1px solid var(--border)}
+.logo{font-family:'Italiana',serif;font-size:26px;letter-spacing:.06em;color:var(--ink);text-decoration:none}.logo span{color:var(--terra)}
+.nav-links{display:flex;gap:2rem;list-style:none;align-items:center}
+.nav-links a{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .2s}
+.nav-links a:hover,.nav-links a.active{color:var(--terra)}
+.nav-book{background:var(--terra);color:var(--white)!important;padding:10px 22px}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none}
+.hamburger span{display:block;width:22px;height:1.5px;background:var(--ink)}
+.mob{display:none;position:fixed;inset:0;background:var(--white);z-index:200;flex-direction:column;align-items:center;justify-content:center;gap:2.5rem}
+.mob.open{display:flex}
+.mob a{font-family:'Italiana',serif;font-size:32px;color:var(--ink);text-decoration:none}
+.mob-close{position:absolute;top:1.75rem;right:2.5rem;background:none;border:none;font-size:28px;cursor:pointer;color:var(--muted)}
+.page-hero{padding:8rem 3rem 4rem;background:var(--sea-pale);border-bottom:1px solid rgba(74,122,140,.15)}
+.page-hero-inner{max-width:1100px;margin:0 auto}
+.page-hero-pre{font-size:10px;letter-spacing:.26em;text-transform:uppercase;color:var(--sea);margin-bottom:1rem}
+.page-hero h1{font-family:'Italiana',serif;font-size:clamp(40px,6vw,72px);color:var(--ink);line-height:1.0}
+.page-hero-sub{font-size:14px;color:var(--muted);line-height:1.9;max-width:500px;margin-top:1.25rem}
+.eyebrow{font-size:10px;letter-spacing:.26em;text-transform:uppercase;color:var(--terra);margin-bottom:1rem}
+.section-h{font-family:'Italiana',serif;font-size:clamp(28px,4vw,46px);line-height:1.05;color:var(--ink);margin-bottom:1.25rem}
+.divider{width:36px;height:2px;background:var(--terra);margin:1.25rem 0}
+/* MAP + INFO */
+.loc-main{padding:6rem 3rem;max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1.2fr;gap:5rem;align-items:start}
+.loc-info p{font-size:14px;color:var(--muted);line-height:1.9;margin-bottom:1.5rem}
+.loc-address{background:var(--sand);padding:1.5rem;margin-bottom:2rem;border-left:3px solid var(--terra)}
+.loc-address-line{font-size:14px;color:var(--ink);line-height:1.8}
+.loc-map{aspect-ratio:4/3;background:linear-gradient(150deg,var(--sea),#2A5A70);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px}
+.loc-map span{font-family:'Italiana',serif;font-size:20px;color:rgba(255,255,255,.5)}
+.loc-map small{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.3)}
+/* DISTANCES */
+.distances{background:var(--sand);padding:6rem 3rem;border-top:1px solid var(--border)}
+.distances-inner{max-width:1100px;margin:0 auto}
+.distances-header{margin-bottom:3rem}
+.dist-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border)}
+.dist-cat{background:var(--white);padding:2rem}
+.dist-cat-title{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--terra);margin-bottom:1.25rem}
+.dist-list{display:flex;flex-direction:column}
+.dist-item{display:flex;justify-content:space-between;align-items:center;padding:.75rem 0;border-bottom:1px solid var(--border);font-size:13px}
+.dist-item:last-child{border-bottom:none}
+.dist-name{color:var(--ink)}
+.dist-time{color:var(--sea);font-size:12px;letter-spacing:.06em}
+/* GETTING HERE */
+.getting-here{padding:6rem 3rem;max-width:1100px;margin:0 auto}
+.gh-header{margin-bottom:3rem}
+.gh-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.gh-card{background:var(--sand);padding:2rem}
+.gh-icon{font-size:28px;margin-bottom:1rem}
+.gh-title{font-size:14px;color:var(--ink);font-weight:400;margin-bottom:.75rem}
+.gh-desc{font-size:13px;color:var(--muted);line-height:1.7}
+.cta{background:var(--deep);padding:5rem 3rem;text-align:center}
+.cta h2{font-family:'Italiana',serif;font-size:clamp(28px,4vw,52px);color:var(--sand);margin-bottom:1.25rem}
+.cta p{font-size:14px;color:rgba(255,255,255,.4);max-width:400px;margin:0 auto 2rem;line-height:1.8}
+.btn-warm{background:var(--warm);color:var(--deep);padding:14px 32px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;transition:background .2s;font-family:'Lato',sans-serif;display:inline-block}
+.btn-warm:hover{background:var(--sand)}
+footer{background:#1E1008;padding:3rem;display:grid;grid-template-columns:1fr 1fr 1fr;gap:2rem}
+.footer-logo{font-family:'Italiana',serif;font-size:24px;color:rgba(255,255,255,.4);margin-bottom:.75rem}
+.footer-tagline{font-size:12px;color:rgba(255,255,255,.2);line-height:1.6}
+.footer-col-title{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:1rem}
+.footer-links{display:flex;flex-direction:column;gap:.5rem}
+.footer-links a{font-size:13px;color:rgba(255,255,255,.3);text-decoration:none;transition:color .2s}
+.footer-links a:hover{color:rgba(255,255,255,.6)}
+.footer-bottom{background:#130A04;padding:1.25rem 3rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+.footer-copy{font-size:11px;color:rgba(255,255,255,.15);letter-spacing:.08em}
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .8s ease,transform .8s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.d1{transition-delay:.1s}
+@media(max-width:900px){
+  nav{padding:.9rem 1.5rem}.nav-links,.nav-book{display:none}.hamburger{display:flex}
+  .page-hero{padding:6rem 1.5rem 3rem}
+  .loc-main{grid-template-columns:1fr;gap:3rem;padding:4rem 1.5rem}
+  .distances,.getting-here{padding:4rem 1.5rem}
+  .dist-grid,.gh-grid{grid-template-columns:1fr}
+  .cta{padding:4rem 1.5rem}
+  footer{grid-template-columns:1fr;padding:2.5rem 1.5rem}
+  .footer-bottom{padding:1rem 1.5rem}
+}
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="logo">Casa <span>Bajda</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li><li><a href="rooms.html">Rooms</a></li>
+    <li><a href="experience.html">Experience</a></li>
+    <li><a href="location.html" class="active">Location</a></li>
+    <li><a href="contact.html" class="nav-book">Book a Stay</a></li>
+  </ul>
+  <button class="hamburger" onclick="document.getElementById('mob').classList.toggle('open')" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+<div class="mob" id="mob">
+  <button class="mob-close" onclick="document.getElementById('mob').classList.remove('open')">×</button>
+  <a href="index.html">Home</a><a href="rooms.html">Rooms</a><a href="experience.html">Experience</a><a href="location.html">Location</a><a href="contact.html">Book</a>
+</div>
+<main>
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <p class="page-hero-pre">Finding Us</p>
+    <h1>Location</h1>
+    <p class="page-hero-sub">Marsaskala is on Malta's quiet east coast — well placed for the whole island, away from the tourist crowds, and five minutes' walk from the sea.</p>
+  </div>
+</div>
+<section class="loc-main reveal">
+  <div class="loc-info">
+    <p class="eyebrow">Address</p>
+    <h2 class="section-h">We're in Marsaskala.</h2>
+    <div class="divider"></div>
+    <p>Marsaskala is one of Malta's most authentic villages — a working fishing community on the south-east coast. It's not a tourist resort, and that's exactly the point. You'll find real restaurants, a calm bay, and the feeling of actual Maltese life.</p>
+    <p>We're on Triq il-Baħar, the main seafront street, one minute from the promenade and two minutes from the best pastizzi shop in the village.</p>
+    <div class="loc-address">
+      <div class="loc-address-line">Casa Bajda</div>
+      <div class="loc-address-line">14, Triq il-Baħar</div>
+      <div class="loc-address-line">Marsaskala MKL 2010</div>
+      <div class="loc-address-line">Malta</div>
+    </div>
+    <a href="contact.html" style="display:inline-block;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--terra);text-decoration:none;border-bottom:1px solid var(--terra);padding-bottom:2px">Book a stay →</a>
+  </div>
+  <div class="loc-map d1"><span>Marsaskala Bay</span><small>South-East Malta</small></div>
+</section>
+<section class="distances reveal">
+  <div class="distances-inner">
+    <div class="distances-header"><p class="eyebrow">Getting Around</p><h2 class="section-h">Well placed for all of Malta.</h2></div>
+    <div class="dist-grid">
+      <div class="dist-cat">
+        <div class="dist-cat-title">Beaches & Nature</div>
+        <div class="dist-list">
+          <div class="dist-item"><span class="dist-name">Marsaskala Bay (walk)</span><span class="dist-time">5 min walk</span></div>
+          <div class="dist-item"><span class="dist-name">St. Peter's Pool</span><span class="dist-time">10 min drive</span></div>
+          <div class="dist-item"><span class="dist-name">Pretty Bay, Birzebbuga</span><span class="dist-time">15 min drive</span></div>
+          <div class="dist-item"><span class="dist-name">Dingli Cliffs</span><span class="dist-time">30 min drive</span></div>
+          <div class="dist-item"><span class="dist-name">Golden Bay</span><span class="dist-time">40 min drive</span></div>
+        </div>
+      </div>
+      <div class="dist-cat">
+        <div class="dist-cat-title">Towns & Attractions</div>
+        <div class="dist-list">
+          <div class="dist-item"><span class="dist-name">Marsaxlokk fish market</span><span class="dist-time">10 min drive</span></div>
+          <div class="dist-item"><span class="dist-name">Malta International Airport</span><span class="dist-time">20 min drive</span></div>
+          <div class="dist-item"><span class="dist-name">Valletta (capital)</span><span class="dist-time">25 min drive</span></div>
+          <div class="dist-item"><span class="dist-name">Mdina (old city)</span><span class="dist-time">30 min drive</span></div>
+          <div class="dist-item"><span class="dist-name">Blue Grotto</span><span class="dist-time">20 min drive</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="getting-here reveal">
+  <div class="gh-header"><p class="eyebrow">Getting Here</p><h2 class="section-h">How to reach us.</h2></div>
+  <div class="gh-grid">
+    <div class="gh-card"><div class="gh-icon">✈</div><div class="gh-title">From the Airport</div><div class="gh-desc">Malta International Airport is 20 minutes by car. We offer a flat-rate transfer for €20 — just let us know your flight details when you book.</div></div>
+    <div class="gh-card"><div class="gh-icon">🚌</div><div class="gh-title">By Bus</div><div class="gh-desc">Bus routes 71 and 72 connect Marsaskala to Valletta. The bus stop is a 3-minute walk from us. Journey to Valletta takes about 45 minutes.</div></div>
+    <div class="gh-card"><div class="gh-icon">🚗</div><div class="gh-title">By Car</div><div class="gh-desc">We have free private parking behind the guesthouse. Coming from the airport, take the arterial road towards Żejtun, then follow signs for Marsaskala.</div></div>
+  </div>
+</section>
+<div class="cta reveal">
+  <h2>Ready to book?</h2>
+  <p>We'll be in touch within a few hours to confirm your stay.</p>
+  <a href="contact.html" class="btn-warm">Check Availability</a>
+</div>
+</main>
+<footer>
+  <div><div class="footer-logo">Casa Bajda</div><div class="footer-tagline">A limestone guesthouse in Marsaskala, Malta. Family-run since 2009.</div></div>
+  <div><div class="footer-col-title">Navigate</div><div class="footer-links"><a href="index.html">Home</a><a href="rooms.html">Rooms</a><a href="experience.html">Experience</a><a href="location.html">Location</a><a href="contact.html">Book a Stay</a></div></div>
+  <div><div class="footer-col-title">Contact</div><div class="footer-links"><a href="tel:+35699000000">+356 9900 0000</a><a href="mailto:stay@casabajda.com.mt">stay@casabajda.com.mt</a><a href="#">WhatsApp Us</a></div></div>
+</footer>
+<div class="footer-bottom"><span class="footer-copy">© 2026 Casa Bajda · Marsaskala, Malta</span><span class="footer-copy">Boutique Guesthouse · B&B</span></div>
+<script>
+const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible')}),{threshold:.08});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>

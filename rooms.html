@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Rooms — Casa Bajda, Marsaskala Malta</title>
+<link href="https://fonts.googleapis.com/css2?family=Italiana&family=Lato:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--sand:#F5EDD8;--stone:#EDE0C4;--limestone:#D4C4A0;--warm:#C4A868;--terra:#A67C4A;--deep:#5C3E20;--sea:#4A7A8C;--ink:#2A1E0E;--muted:#7A6848;--white:#FDFAF4;--border:#DDD0B0}
+html{scroll-behavior:smooth}
+body{background:var(--white);color:var(--ink);font-family:'Lato',sans-serif;font-weight:300;overflow-x:hidden;display:flex;flex-direction:column;min-height:100vh}
+main{flex:1}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.1rem 3rem;display:flex;justify-content:space-between;align-items:center;background:rgba(253,250,244,.97);border-bottom:1px solid var(--border)}
+.logo{font-family:'Italiana',serif;font-size:26px;letter-spacing:.06em;color:var(--ink);text-decoration:none}
+.logo span{color:var(--terra)}
+.nav-links{display:flex;gap:2rem;list-style:none;align-items:center}
+.nav-links a{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .2s}
+.nav-links a:hover,.nav-links a.active{color:var(--terra)}
+.nav-book{background:var(--terra);color:var(--white)!important;padding:10px 22px}
+.nav-book:hover{background:var(--deep)!important}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none}
+.hamburger span{display:block;width:22px;height:1.5px;background:var(--ink)}
+.mob{display:none;position:fixed;inset:0;background:var(--white);z-index:200;flex-direction:column;align-items:center;justify-content:center;gap:2.5rem}
+.mob.open{display:flex}
+.mob a{font-family:'Italiana',serif;font-size:32px;color:var(--ink);text-decoration:none}
+.mob-close{position:absolute;top:1.75rem;right:2.5rem;background:none;border:none;font-size:28px;cursor:pointer;color:var(--muted)}
+.page-hero{padding:8rem 3rem 4rem;background:var(--sand);border-bottom:1px solid var(--border)}
+.page-hero-inner{max-width:1100px;margin:0 auto}
+.page-hero-pre{font-size:10px;letter-spacing:.26em;text-transform:uppercase;color:var(--terra);margin-bottom:1rem}
+.page-hero h1{font-family:'Italiana',serif;font-size:clamp(40px,6vw,72px);color:var(--ink);line-height:1.0}
+.page-hero-sub{font-size:14px;color:var(--muted);line-height:1.9;max-width:500px;margin-top:1.25rem}
+/* ROOM DETAIL CARDS */
+.rooms-section{padding:6rem 3rem}
+.rooms-inner{max-width:1100px;margin:0 auto;display:flex;flex-direction:column;gap:5rem}
+.room-detail{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+.room-detail.reverse{direction:rtl}
+.room-detail.reverse>*{direction:ltr}
+.room-img-large{aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative}
+.room-img-inner{width:100%;height:100%;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:10px;transition:transform .4s}
+.room-detail:hover .room-img-inner{transform:scale(1.04)}
+.room-img-label{font-family:'Italiana',serif;font-size:18px;color:rgba(255,255,255,.5)}
+.room-tag-badge{position:absolute;top:16px;left:16px;background:var(--terra);color:var(--sand);font-size:10px;letter-spacing:.12em;text-transform:uppercase;padding:5px 12px}
+.room-info{min-width:0}
+.room-eyebrow{font-size:10px;letter-spacing:.26em;text-transform:uppercase;color:var(--terra);margin-bottom:.75rem}
+.room-name{font-family:'Italiana',serif;font-size:clamp(28px,3.5vw,44px);color:var(--ink);margin-bottom:1rem;line-height:1.05}
+.room-desc{font-size:14px;color:var(--muted);line-height:1.9;margin-bottom:1.5rem}
+.room-amenities{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:1.75rem}
+.am{font-size:11px;color:var(--terra);background:var(--sand);padding:5px 12px;letter-spacing:.05em}
+.room-price-row{display:flex;align-items:baseline;gap:.75rem;margin-bottom:1.75rem;padding-bottom:1.75rem;border-bottom:1px solid var(--border)}
+.room-price-num{font-family:'Italiana',serif;font-size:36px;color:var(--terra)}
+.room-price-label{font-size:12px;color:var(--muted)}
+.btn-terra{background:var(--terra);color:var(--white);padding:13px 28px;font-size:11px;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;transition:background .2s;font-family:'Lato',sans-serif;display:inline-block}
+.btn-terra:hover{background:var(--deep)}
+.room-divider{border:none;border-top:1px solid var(--border);margin:1rem 0 0}
+/* POLICIES */
+.policies{background:var(--sand);padding:5rem 3rem;border-top:1px solid var(--border)}
+.policies-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:2rem}
+.policy{text-align:center;padding:1.5rem}
+.policy-icon{font-size:24px;margin-bottom:.75rem}
+.policy-title{font-size:13px;color:var(--ink);font-weight:400;margin-bottom:.4rem}
+.policy-desc{font-size:12px;color:var(--muted);line-height:1.6}
+footer{background:#1E1008;padding:3rem;display:grid;grid-template-columns:1fr 1fr 1fr;gap:2rem}
+.footer-logo{font-family:'Italiana',serif;font-size:24px;color:rgba(255,255,255,.4);margin-bottom:.75rem}
+.footer-tagline{font-size:12px;color:rgba(255,255,255,.2);line-height:1.6}
+.footer-col-title{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:1rem}
+.footer-links{display:flex;flex-direction:column;gap:.5rem}
+.footer-links a{font-size:13px;color:rgba(255,255,255,.3);text-decoration:none;transition:color .2s}
+.footer-links a:hover{color:rgba(255,255,255,.6)}
+.footer-bottom{background:#130A04;padding:1.25rem 3rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+.footer-copy{font-size:11px;color:rgba(255,255,255,.15);letter-spacing:.08em}
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .8s ease,transform .8s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+@media(max-width:900px){
+  nav{padding:.9rem 1.5rem}.nav-links,.nav-book{display:none}.hamburger{display:flex}
+  .page-hero{padding:6rem 1.5rem 3rem}
+  .rooms-section{padding:4rem 1.5rem}
+  .room-detail,.room-detail.reverse{grid-template-columns:1fr;direction:ltr}
+  .policies{padding:3rem 1.5rem}.policies-inner{grid-template-columns:1fr 1fr}
+  footer{grid-template-columns:1fr;padding:2.5rem 1.5rem}
+  .footer-bottom{padding:1rem 1.5rem}
+}
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="logo">Casa <span>Bajda</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="rooms.html" class="active">Rooms</a></li>
+    <li><a href="experience.html">Experience</a></li>
+    <li><a href="location.html">Location</a></li>
+    <li><a href="contact.html" class="nav-book">Book a Stay</a></li>
+  </ul>
+  <button class="hamburger" onclick="document.getElementById('mob').classList.toggle('open')" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+<div class="mob" id="mob">
+  <button class="mob-close" onclick="document.getElementById('mob').classList.remove('open')">×</button>
+  <a href="index.html">Home</a><a href="rooms.html">Rooms</a><a href="experience.html">Experience</a><a href="location.html">Location</a><a href="contact.html">Book</a>
+</div>
+<main>
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <p class="page-hero-pre">Accommodation</p>
+    <h1>Our Rooms</h1>
+    <p class="page-hero-sub">Every room is inside the original limestone building. Each one is different — because they always were. All rates include breakfast.</p>
+  </div>
+</div>
+<section class="rooms-section">
+  <div class="rooms-inner">
+    <div class="room-detail reveal">
+      <div class="room-img-large"><div class="room-img-inner" style="background:linear-gradient(150deg,#C4A868,#A67C4A)"><div class="room-img-label">Sea View Double</div></div><div class="room-tag-badge">Most Popular</div></div>
+      <div class="room-info">
+        <p class="room-eyebrow">Room 1</p>
+        <h2 class="room-name">Sea View Double</h2>
+        <p class="room-desc">Wake up to the Mediterranean. This upper-floor room features a private balcony overlooking Marsaskala Bay, a comfortable double bed, and original limestone walls that keep it naturally cool in summer. Private ensuite with walk-in shower, air conditioning, and free WiFi throughout.</p>
+        <div class="room-amenities"><span class="am">Sea view</span><span class="am">Private balcony</span><span class="am">Ensuite</span><span class="am">Air conditioning</span><span class="am">Free WiFi</span><span class="am">Double bed</span><span class="am">Breakfast included</span></div>
+        <div class="room-price-row"><div class="room-price-num">€90</div><div class="room-price-label">per night · breakfast included</div></div>
+        <a href="contact.html" class="btn-terra">Book This Room</a>
+      </div>
+    </div>
+    <hr class="room-divider"/>
+    <div class="room-detail reverse reveal">
+      <div class="room-img-large"><div class="room-img-inner" style="background:linear-gradient(150deg,#8C6A3A,#5C3E20)"><div class="room-img-label">Garden Room</div></div></div>
+      <div class="room-info">
+        <p class="room-eyebrow">Room 2</p>
+        <h2 class="room-name">Garden Room</h2>
+        <p class="room-desc">A quiet twin room on the ground floor overlooking our shaded courtyard garden. Perfect for two friends or travellers who prefer their own beds. Private entrance from the garden, ensuite bathroom, and all the usual comforts. The coolest room in the house in summer.</p>
+        <div class="room-amenities"><span class="am">Garden view</span><span class="am">Twin beds</span><span class="am">Private entrance</span><span class="am">Ensuite</span><span class="am">Air conditioning</span><span class="am">Free WiFi</span><span class="am">Breakfast included</span></div>
+        <div class="room-price-row"><div class="room-price-num">€75</div><div class="room-price-label">per night · breakfast included</div></div>
+        <a href="contact.html" class="btn-terra">Book This Room</a>
+      </div>
+    </div>
+    <hr class="room-divider"/>
+    <div class="room-detail reveal">
+      <div class="room-img-large"><div class="room-img-inner" style="background:linear-gradient(150deg,#4A7A8C,#2A5A6C)"><div class="room-img-label">Family Suite</div></div><div class="room-tag-badge" style="background:var(--sea)">Best for Families</div></div>
+      <div class="room-info">
+        <p class="room-eyebrow">Room 3</p>
+        <h2 class="room-name">Family Suite</h2>
+        <p class="room-desc">Our largest accommodation — two connected rooms with a shared sea-facing terrace. The main bedroom has a king-size bed; the adjoining room has two singles for children or additional guests. A small kitchenette with fridge, kettle, and microwave is included, along with a full ensuite bathroom.</p>
+        <div class="room-amenities"><span class="am">Sea terrace</span><span class="am">2 bedrooms</span><span class="am">King + 2 singles</span><span class="am">Kitchenette</span><span class="am">Ensuite</span><span class="am">Air conditioning</span><span class="am">Free WiFi</span><span class="am">Breakfast included</span></div>
+        <div class="room-price-row"><div class="room-price-num">€140</div><div class="room-price-label">per night · breakfast included</div></div>
+        <a href="contact.html" class="btn-terra">Book This Room</a>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="policies reveal">
+  <div class="policies-inner">
+    <div class="policy"><div class="policy-icon">🕐</div><div class="policy-title">Check-in / Check-out</div><div class="policy-desc">Check-in from 14:00. Check-out by 11:00. Early/late available on request.</div></div>
+    <div class="policy"><div class="policy-icon">❌</div><div class="policy-title">Cancellation</div><div class="policy-desc">Free cancellation up to 48 hours before arrival. First night charged within 48hrs.</div></div>
+    <div class="policy"><div class="policy-icon">🚗</div><div class="policy-title">Parking</div><div class="policy-desc">Free private parking for up to 3 cars behind the guesthouse.</div></div>
+    <div class="policy"><div class="policy-icon">🍳</div><div class="policy-title">Breakfast</div><div class="policy-desc">Included for all guests. Served 7:30–9:30. Dietary needs accommodated.</div></div>
+  </div>
+</section>
+</main>
+<footer>
+  <div><div class="footer-logo">Casa Bajda</div><div class="footer-tagline">A limestone guesthouse in Marsaskala, Malta. Family-run since 2009.</div></div>
+  <div><div class="footer-col-title">Navigate</div><div class="footer-links"><a href="index.html">Home</a><a href="rooms.html">Rooms</a><a href="experience.html">Experience</a><a href="location.html">Location</a><a href="contact.html">Book a Stay</a></div></div>
+  <div><div class="footer-col-title">Contact</div><div class="footer-links"><a href="tel:+35699000000">+356 9900 0000</a><a href="mailto:stay@casabajda.com.mt">stay@casabajda.com.mt</a><a href="#">WhatsApp Us</a></div></div>
+</footer>
+<div class="footer-bottom"><span class="footer-copy">© 2026 Casa Bajda · Marsaskala, Malta</span><span class="footer-copy">Boutique Guesthouse · B&B</span></div>
+<script>
+const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible')}),{threshold:.08});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
